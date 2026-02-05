@@ -15,17 +15,17 @@ import { Progress } from "@/components/ui/progress"
 
 const terms = [7, 14, 30, 60, 90, 180, 365]
 const repayMethods = [
-  { value: "bullet", label: "到期还本付息" },
-  { value: "equal_installment", label: "等额本息" },
-  { value: "interest_first", label: "先息后本" },
-  { value: "equal_principal", label: "等额本金" },
+  { value: "bullet", label: "Bullet" },
+  { value: "equal_installment", label: "Equal Installment" },
+  { value: "interest_first", label: "Interest First" },
+  { value: "equal_principal", label: "Equal Principal" },
 ]
 const currencies = ["USDT", "USDC", "NGN", "USD"]
-const usageCategories = ["采购原材料", "运营周转", "设备购置", "市场拓展", "应收账款垫资", "其他"]
+const usageCategories = ["Raw Materials", "Working Capital", "Equipment", "Market Expansion", "Receivables Financing", "Other"]
 const collateralTypes = [
-  { value: "none", label: "无" },
-  { value: "crypto", label: "Crypto 质押" },
-  { value: "guarantee", label: "第三方保证金" },
+  { value: "none", label: "None" },
+  { value: "crypto", label: "Crypto Collateral" },
+  { value: "guarantee", label: "Third-party Guarantee" },
 ]
 
 export default function PostBorrow() {
@@ -53,8 +53,8 @@ export default function PostBorrow() {
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <div className="mb-8">
-          <h1 className="text-2xl font-bold sm:text-3xl">发布借款需求</h1>
-          <p className="mt-1 text-muted-foreground">设置您的借款条件，AI Agent 将为您匹配最优出借方</p>
+          <h1 className="text-2xl font-bold sm:text-3xl">Post Borrowing Request</h1>
+          <p className="mt-1 text-muted-foreground">Set your borrowing conditions, AI Agent will match the optimal lender for you</p>
         </div>
 
         <div className="space-y-6">
@@ -63,14 +63,14 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-cyan-400" />
-                <CardTitle className="text-base">借款金额</CardTitle>
+                <CardTitle className="text-base">Borrowing Amount</CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex gap-3">
                 <Input
                   type="number"
-                  placeholder="输入金额"
+                  placeholder="Enter amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   className="flex-1 text-lg"
@@ -90,10 +90,10 @@ export default function PostBorrow() {
                 </div>
               </div>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>可用额度: ${available.toLocaleString()}</span>
+                <span>Available Credit: ${available.toLocaleString()}</span>
                 {amount && (
                   <span className={Number(amount) > available ? "text-red-400" : "text-emerald-400"}>
-                    {Number(amount) > available ? "超出可用额度" : "额度充足"}
+                    {Number(amount) > available ? "Exceeds Available Credit" : "Credit Available"}
                   </span>
                 )}
               </div>
@@ -108,7 +108,7 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <Percent className="h-4 w-4 text-amber-400" />
-                <CardTitle className="text-base">可接受最高年化利率</CardTitle>
+                <CardTitle className="text-base">Maximum Acceptable Annual Rate</CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -120,7 +120,7 @@ export default function PostBorrow() {
               </div>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>5%</span>
-                <span>市场参考: 15%-25%</span>
+                <span>Market Reference: 15%-25%</span>
                 <span>60%</span>
               </div>
             </CardContent>
@@ -131,7 +131,7 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-violet-400" />
-                <CardTitle className="text-base">借贷期限</CardTitle>
+                <CardTitle className="text-base">Loan Term</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -144,7 +144,7 @@ export default function PostBorrow() {
                     onClick={() => setSelectedTerm(t)}
                     className={selectedTerm === t ? "bg-cyan-600 hover:bg-cyan-700" : "border-border/50"}
                   >
-                    {t}天
+                    {t} days
                   </Button>
                 ))}
               </div>
@@ -156,7 +156,7 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <CreditCard className="h-4 w-4 text-emerald-400" />
-                <CardTitle className="text-base">还款方式偏好</CardTitle>
+                <CardTitle className="text-base">Repayment Preference</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -181,7 +181,7 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-violet-400" />
-                <CardTitle className="text-base">可提供质押</CardTitle>
+                <CardTitle className="text-base">Available Collateral</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -206,7 +206,7 @@ export default function PostBorrow() {
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
                 <FileText className="h-4 w-4 text-amber-400" />
-                <CardTitle className="text-base">资金用途 <span className="text-xs text-red-400">*必填</span></CardTitle>
+                <CardTitle className="text-base">Fund Usage <span className="text-xs text-red-400">*Required</span></CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -225,7 +225,7 @@ export default function PostBorrow() {
               </div>
               <div>
                 <div className="mb-1 flex justify-between text-xs text-muted-foreground">
-                  <span>详细说明（最少50字）</span>
+                  <span>Detailed Description (min. 50 characters)</span>
                   <span className={usageDetail.length >= 50 ? "text-emerald-400" : "text-amber-400"}>
                     {usageDetail.length}/50
                   </span>
@@ -233,7 +233,7 @@ export default function PostBorrow() {
                 <textarea
                   className="w-full rounded-lg border border-border/50 bg-background p-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
                   rows={4}
-                  placeholder="请详细描述资金用途、预期收益、还款来源等信息..."
+                  placeholder="Please describe fund usage, expected returns, repayment source, etc..."
                   value={usageDetail}
                   onChange={(e) => setUsageDetail(e.target.value)}
                 />
@@ -241,8 +241,8 @@ export default function PostBorrow() {
               <div className="flex items-center gap-3 rounded-lg border border-dashed border-border/50 p-4">
                 <Upload className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <div className="text-sm">上传附件</div>
-                  <div className="text-xs text-muted-foreground">支持 PDF、图片等（Demo 模拟）</div>
+                  <div className="text-sm">Upload Attachments</div>
+                  <div className="text-xs text-muted-foreground">Supports PDF, images, etc. (Demo simulation)</div>
                 </div>
               </div>
             </CardContent>
@@ -251,19 +251,19 @@ export default function PostBorrow() {
           {/* Summary + Submit */}
           <Card className="border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 to-transparent">
             <CardContent className="p-5">
-              <h3 className="mb-3 font-medium">订单摘要</h3>
+              <h3 className="mb-3 font-medium">Order Summary</h3>
               <div className="mb-4 grid grid-cols-2 gap-2 text-sm">
-                <span className="text-muted-foreground">金额:</span>
+                <span className="text-muted-foreground">Amount:</span>
                 <span className="font-medium">{amount || "—"} {currency}</span>
-                <span className="text-muted-foreground">最高利率:</span>
+                <span className="text-muted-foreground">Max Rate:</span>
                 <span className="font-medium text-amber-400">{maxRate[0]}%</span>
-                <span className="text-muted-foreground">期限:</span>
-                <span className="font-medium">{selectedTerm}天</span>
-                <span className="text-muted-foreground">还款方式:</span>
+                <span className="text-muted-foreground">Term:</span>
+                <span className="font-medium">{selectedTerm} days</span>
+                <span className="text-muted-foreground">Repayment:</span>
                 <span className="font-medium">{repayMethods.find(m => m.value === repayMethod)?.label}</span>
-                <span className="text-muted-foreground">质押:</span>
+                <span className="text-muted-foreground">Collateral:</span>
                 <span className="font-medium">{collateralTypes.find(c => c.value === collateralType)?.label}</span>
-                <span className="text-muted-foreground">用途:</span>
+                <span className="text-muted-foreground">Usage:</span>
                 <span className="font-medium">{usageCategory || "—"}</span>
               </div>
               <Button
@@ -276,15 +276,15 @@ export default function PostBorrow() {
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
                     <Sparkles className="h-4 w-4" />
-                    Agent 正在匹配...
+                    Agent Matching...
                   </>
                 ) : (
-                  <>提交借款需求</>
+                  <>Submit Borrowing Request</>
                 )}
               </Button>
               {(!amount || !usageCategory || usageDetail.length < 50) && (
                 <p className="mt-2 text-center text-xs text-muted-foreground">
-                  请完成所有必填项后提交
+                  Please complete all required fields before submitting
                 </p>
               )}
             </CardContent>

@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
-const steps = ["选择角色", "基本信息", "身份验证", "审核中", "完成"]
+const steps = ["Select Role", "Basic Info", "Identity Verification", "Under Review", "Complete"]
 
 export default function RegisterPage() {
   const [step, setStep] = useState(1)
@@ -65,8 +65,8 @@ export default function RegisterPage() {
         {step === 1 && (
           <motion.div key="step1" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
             <div className="mb-6 text-center">
-              <h1 className="text-2xl font-bold">选择您的角色</h1>
-              <p className="mt-1 text-muted-foreground">不同角色享受不同的平台功能</p>
+              <h1 className="text-2xl font-bold">Select Your Role</h1>
+              <p className="mt-1 text-muted-foreground">Different roles unlock different platform features</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <Card
@@ -79,12 +79,12 @@ export default function RegisterPage() {
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
                     <DollarSign className="h-8 w-8" />
                   </div>
-                  <h3 className="mb-2 text-lg font-bold">我是出借方</h3>
+                  <h3 className="mb-2 text-lg font-bold">I am a Lender</h3>
                   <p className="text-sm text-muted-foreground">Lender</p>
                   <div className="mt-4 space-y-1 text-xs text-muted-foreground text-left">
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> 出借资金获取利息收益</div>
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> $U 生息 4.5% APY</div>
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> AI 匹配优质借款方</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> Lend funds and earn interest</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> $U Yield 4.5% APY</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-emerald-400" /> AI matches quality borrowers</div>
                   </div>
                 </CardContent>
               </Card>
@@ -98,12 +98,12 @@ export default function RegisterPage() {
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-cyan-500/20 text-cyan-400">
                     <Wallet className="h-8 w-8" />
                   </div>
-                  <h3 className="mb-2 text-lg font-bold">我是借款方</h3>
+                  <h3 className="mb-2 text-lg font-bold">I am a Borrower</h3>
                   <p className="text-sm text-muted-foreground">Borrower</p>
                   <div className="mt-4 space-y-1 text-xs text-muted-foreground text-left">
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> 获取低利率借款</div>
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> 渐进式额度提升</div>
-                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> 灵活还款方式</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> Access low-rate financing</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> Progressive credit limits</div>
+                    <div className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-cyan-400" /> Flexible repayment options</div>
                   </div>
                 </CardContent>
               </Card>
@@ -114,7 +114,7 @@ export default function RegisterPage() {
               disabled={!role}
               onClick={() => setStep(2)}
             >
-              继续 <ArrowRight className="h-4 w-4" />
+              Continue <ArrowRight className="h-4 w-4" />
             </Button>
           </motion.div>
         )}
@@ -123,46 +123,46 @@ export default function RegisterPage() {
         {step === 2 && (
           <motion.div key="step2" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
             <div className="mb-6 text-center">
-              <h1 className="text-2xl font-bold">基本信息</h1>
-              <p className="mt-1 text-muted-foreground">请填写您的基本注册信息</p>
+              <h1 className="text-2xl font-bold">Basic Information</h1>
+              <p className="mt-1 text-muted-foreground">Please fill in your registration details</p>
             </div>
             <Card className="border-border/50">
               <CardContent className="space-y-4 p-6">
                 <div>
                   <label className="mb-1 flex items-center gap-2 text-sm">
                     {role === "borrower" ? <Building2 className="h-3.5 w-3.5" /> : <User className="h-3.5 w-3.5" />}
-                    {role === "borrower" ? "公司名称" : "姓名"}
+                    {role === "borrower" ? "Company Name" : "Full Name"}
                   </label>
                   <Input
-                    placeholder={role === "borrower" ? "例如: Sahel Trade Co." : "例如: 张伟"}
+                    placeholder={role === "borrower" ? "e.g., Sahel Trade Co." : "e.g., John Smith"}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                   />
                 </div>
                 <div>
                   <label className="mb-1 flex items-center gap-2 text-sm">
-                    <Mail className="h-3.5 w-3.5" /> 邮箱
+                    <Mail className="h-3.5 w-3.5" /> Email
                   </label>
                   <Input type="email" placeholder="your@email.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 </div>
                 <div>
                   <label className="mb-1 flex items-center gap-2 text-sm">
-                    <Phone className="h-3.5 w-3.5" /> 手机号
+                    <Phone className="h-3.5 w-3.5" /> Phone Number
                   </label>
                   <Input type="tel" placeholder="+234 xxx xxxx xxx" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
                 </div>
                 <div>
                   <label className="mb-1 flex items-center gap-2 text-sm">
-                    <Lock className="h-3.5 w-3.5" /> 密码
+                    <Lock className="h-3.5 w-3.5" /> Password
                   </label>
-                  <Input type="password" placeholder="设置密码" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+                  <Input type="password" placeholder="Set password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
                 </div>
               </CardContent>
             </Card>
             <div className="mt-6 flex gap-3">
-              <Button variant="outline" className="border-border/50" onClick={() => setStep(1)}>返回</Button>
+              <Button variant="outline" className="border-border/50" onClick={() => setStep(1)}>Back</Button>
               <Button className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700" onClick={() => setStep(3)}>
-                继续 <ArrowRight className="h-4 w-4" />
+                Continue <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </motion.div>
@@ -172,14 +172,14 @@ export default function RegisterPage() {
         {step === 3 && (
           <motion.div key="step3" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
             <div className="mb-6 text-center">
-              <h1 className="text-2xl font-bold">{role === "borrower" ? "KYB 企业验证" : "KYC 身份验证"}</h1>
-              <p className="mt-1 text-muted-foreground">{role === "borrower" ? "上传企业资质文件（Demo 模拟）" : "上传身份证件（Demo 模拟）"}</p>
+              <h1 className="text-2xl font-bold">{role === "borrower" ? "KYB Business Verification" : "KYC Identity Verification"}</h1>
+              <p className="mt-1 text-muted-foreground">{role === "borrower" ? "Upload business documents (Demo simulation)" : "Upload identity documents (Demo simulation)"}</p>
             </div>
 
             <div className="space-y-4">
               {role === "borrower" ? (
                 <>
-                  {["营业执照", "法人身份证", "银行开户证明", "运营数据"].map((doc) => (
+                  {["Business License", "Director ID", "Bank Account Proof", "Operational Data"].map((doc) => (
                     <Card key={doc} className="border-border/50">
                       <CardContent className="flex items-center gap-4 p-4">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
@@ -187,10 +187,10 @@ export default function RegisterPage() {
                         </div>
                         <div className="flex-1">
                           <div className="text-sm font-medium">{doc}</div>
-                          <div className="text-xs text-muted-foreground">点击上传（Demo 模拟）</div>
+                          <div className="text-xs text-muted-foreground">Click to upload (Demo simulation)</div>
                         </div>
                         <Button variant="outline" size="sm" className="gap-1 border-border/50 text-xs">
-                          <Upload className="h-3 w-3" /> 上传
+                          <Upload className="h-3 w-3" /> Upload
                         </Button>
                       </CardContent>
                     </Card>
@@ -204,11 +204,11 @@ export default function RegisterPage() {
                         <FileText className="h-5 w-5" />
                       </div>
                       <div className="flex-1">
-                        <div className="text-sm font-medium">身份证/护照</div>
-                        <div className="text-xs text-muted-foreground">正反面照片（Demo 模拟）</div>
+                        <div className="text-sm font-medium">ID Card / Passport</div>
+                        <div className="text-xs text-muted-foreground">Front and back photos (Demo simulation)</div>
                       </div>
                       <Button variant="outline" size="sm" className="gap-1 border-border/50 text-xs">
-                        <Upload className="h-3 w-3" /> 上传
+                        <Upload className="h-3 w-3" /> Upload
                       </Button>
                     </CardContent>
                   </Card>
@@ -218,11 +218,11 @@ export default function RegisterPage() {
                         <Camera className="h-5 w-5" />
                       </div>
                       <div className="flex-1">
-                        <div className="text-sm font-medium">人脸识别</div>
-                        <div className="text-xs text-muted-foreground">实时拍照验证（Demo 模拟）</div>
+                        <div className="text-sm font-medium">Face Verification</div>
+                        <div className="text-xs text-muted-foreground">Live photo verification (Demo simulation)</div>
                       </div>
                       <Button variant="outline" size="sm" className="gap-1 border-border/50 text-xs">
-                        <Camera className="h-3 w-3" /> 拍照
+                        <Camera className="h-3 w-3" /> Capture
                       </Button>
                     </CardContent>
                   </Card>
@@ -231,9 +231,9 @@ export default function RegisterPage() {
             </div>
 
             <div className="mt-6 flex gap-3">
-              <Button variant="outline" className="border-border/50" onClick={() => setStep(2)}>返回</Button>
+              <Button variant="outline" className="border-border/50" onClick={() => setStep(2)}>Back</Button>
               <Button className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700" onClick={() => setStep(4)}>
-                提交验证 <ArrowRight className="h-4 w-4" />
+                Submit Verification <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </motion.div>
@@ -248,12 +248,12 @@ export default function RegisterPage() {
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500/20 to-cyan-500/20">
                     <Loader2 className="h-10 w-10 animate-spin text-emerald-400" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold">审核中...</h2>
+                  <h2 className="mb-2 text-xl font-bold">Under Review...</h2>
                   <p className="mb-6 text-sm text-muted-foreground">
-                    {verifyProgress < 30 && "验证身份信息..."}
-                    {verifyProgress >= 30 && verifyProgress < 60 && "核查企业资质..."}
-                    {verifyProgress >= 60 && verifyProgress < 90 && "评估信用额度..."}
-                    {verifyProgress >= 90 && "生成审核报告..."}
+                    {verifyProgress < 30 && "Verifying identity information..."}
+                    {verifyProgress >= 30 && verifyProgress < 60 && "Checking business credentials..."}
+                    {verifyProgress >= 60 && verifyProgress < 90 && "Assessing credit limit..."}
+                    {verifyProgress >= 90 && "Generating review report..."}
                   </p>
                   <div className="w-64">
                     <Progress value={verifyProgress} className="h-2" />
@@ -264,15 +264,15 @@ export default function RegisterPage() {
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20">
                     <CheckCircle2 className="h-10 w-10 text-emerald-400" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold">审核通过！🎉</h2>
-                  <p className="mb-2 text-muted-foreground">恭喜，您的身份验证已通过。</p>
+                  <h2 className="mb-2 text-xl font-bold">Verification Approved! 🎉</h2>
+                  <p className="mb-2 text-muted-foreground">Congratulations, your identity verification is complete.</p>
                   {role === "borrower" && (
                     <div className="mb-4 rounded-lg bg-secondary/50 px-4 py-2 text-sm">
-                      初始额度: <span className="font-bold text-emerald-400">$5,000</span> (Lv.1)
+                      Initial Limit: <span className="font-bold text-emerald-400">$5,000</span> (Lv.1)
                     </div>
                   )}
                   <Button className="gap-2 bg-emerald-600 hover:bg-emerald-700" onClick={() => setStep(5)}>
-                    继续 <ArrowRight className="h-4 w-4" />
+                    Continue <ArrowRight className="h-4 w-4" />
                   </Button>
                 </motion.div>
               )}
@@ -292,11 +292,11 @@ export default function RegisterPage() {
               >
                 <Shield className="h-10 w-10 text-emerald-400" />
               </motion.div>
-              <h1 className="mb-2 text-2xl font-bold">注册完成！</h1>
-              <p className="mb-6 text-muted-foreground">您已成功注册为{role === "lender" ? "出借方" : "借款方"}</p>
+              <h1 className="mb-2 text-2xl font-bold">Registration Complete!</h1>
+              <p className="mb-6 text-muted-foreground">You have successfully registered as a {role === "lender" ? "Lender" : "Borrower"}</p>
               <Link href={role === "lender" ? "/lender/dashboard" : "/borrower/dashboard"}>
                 <Button size="lg" className="gap-2 bg-emerald-600 hover:bg-emerald-700">
-                  进入 Dashboard <ArrowRight className="h-4 w-4" />
+                  Go to Dashboard <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
             </div>

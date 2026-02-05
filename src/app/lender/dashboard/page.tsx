@@ -18,19 +18,19 @@ const YieldChart = dynamic(() => import("@/components/charts/YieldChart"), { ssr
 const fadeUp = { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 } }
 
 const statusMap: Record<string, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
-  active: { label: "进行中", variant: "default" },
-  completed: { label: "已完成", variant: "secondary" },
-  overdue: { label: "逾期", variant: "destructive" },
-  pending: { label: "待匹配", variant: "outline" },
-  cancelled: { label: "已取消", variant: "outline" },
-  matched: { label: "已匹配", variant: "default" },
+  active: { label: "Active", variant: "default" },
+  completed: { label: "Completed", variant: "secondary" },
+  overdue: { label: "Overdue", variant: "destructive" },
+  pending: { label: "Pending Match", variant: "outline" },
+  cancelled: { label: "Cancelled", variant: "outline" },
+  matched: { label: "Matched", variant: "default" },
 }
 
 const repayMethodMap: Record<string, string> = {
-  bullet: "到期还本付息",
-  equal_installment: "等额本息",
-  interest_first: "先息后本",
-  equal_principal: "等额本金",
+  bullet: "Bullet",
+  equal_installment: "Equal Installment",
+  interest_first: "Interest First",
+  equal_principal: "Equal Principal",
 }
 
 export default function LenderDashboard() {
@@ -45,9 +45,9 @@ export default function LenderDashboard() {
       {/* Header */}
       <motion.div {...fadeUp} className="mb-8">
         <h1 className="text-2xl font-bold sm:text-3xl">
-          欢迎回来，<span className="gradient-text">{lenderUser.name}</span>
+          Welcome back, <span className="gradient-text">{lenderUser.name}</span>
         </h1>
-        <p className="mt-1 text-muted-foreground">出借方控制中心 · {lenderUser.company}</p>
+        <p className="mt-1 text-muted-foreground">Lender Control Center · {lenderUser.company}</p>
       </motion.div>
 
       {/* Top Cards Row */}
@@ -57,12 +57,12 @@ export default function LenderDashboard() {
           <Card className="border-border/50 bg-gradient-to-br from-emerald-500/10 to-transparent glow-green">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">总资产 (USD)</span>
+                <span className="text-sm text-muted-foreground">Total Assets (USD)</span>
                 <Wallet className="h-4 w-4 text-emerald-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">${walletTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
               <div className="mt-1 flex items-center gap-1 text-xs text-emerald-400">
-                <ArrowUpRight className="h-3 w-3" /> +12.5% 本月
+                <ArrowUpRight className="h-3 w-3" /> +12.5% this month
               </div>
             </CardContent>
           </Card>
@@ -73,7 +73,7 @@ export default function LenderDashboard() {
           <Card className="border-border/50">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">USDT 余额</span>
+                <span className="text-sm text-muted-foreground">USDT Balance</span>
                 <DollarSign className="h-4 w-4 text-green-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">{lenderUser.walletBalances.USDT.toLocaleString()}</div>
@@ -87,7 +87,7 @@ export default function LenderDashboard() {
           <Card className="border-border/50">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">USDC 余额</span>
+                <span className="text-sm text-muted-foreground">USDC Balance</span>
                 <DollarSign className="h-4 w-4 text-blue-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">{lenderUser.walletBalances.USDC.toLocaleString()}</div>
@@ -101,7 +101,7 @@ export default function LenderDashboard() {
           <Card className="border-border/50 bg-gradient-to-br from-cyan-500/10 to-transparent glow-blue">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">$U 余额</span>
+                <span className="text-sm text-muted-foreground">$U Balance</span>
                 <Star className="h-4 w-4 text-cyan-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">{lenderUser.walletBalances.U.toLocaleString()}</div>
@@ -116,19 +116,19 @@ export default function LenderDashboard() {
       {/* Action Buttons */}
       <motion.div {...fadeUp} transition={{ delay: 0.25 }} className="mb-8 flex flex-wrap gap-3">
         <Button className="gap-2 bg-emerald-600 hover:bg-emerald-700">
-          <ArrowUpRight className="h-4 w-4" /> 充值
+          <ArrowUpRight className="h-4 w-4" /> Deposit
         </Button>
         <Button variant="outline" className="gap-2 border-border/50">
-          <ArrowDownRight className="h-4 w-4" /> 提现
+          <ArrowDownRight className="h-4 w-4" /> Withdraw
         </Button>
         <Link href="/post/lend">
           <Button variant="outline" className="gap-2 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10">
-            <Plus className="h-4 w-4" /> 发布出借需求
+            <Plus className="h-4 w-4" /> Post Lending Order
           </Button>
         </Link>
         <Link href="/market">
           <Button variant="outline" className="gap-2 border-border/50">
-            <Store className="h-4 w-4" /> 浏览市场
+            <Store className="h-4 w-4" /> Browse Market
           </Button>
         </Link>
       </motion.div>
@@ -141,9 +141,9 @@ export default function LenderDashboard() {
             <Card className="border-border/50">
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base">$U 收益趋势 (30天 APY %)</CardTitle>
+                  <CardTitle className="text-base">$U Yield Trend (30-Day APY %)</CardTitle>
                   <Badge variant="secondary" className="text-xs">
-                    累计收益: $1,650
+                    Cumulative Yield: $1,650
                   </Badge>
                 </div>
               </CardHeader>
@@ -157,21 +157,21 @@ export default function LenderDashboard() {
           <motion.div {...fadeUp} transition={{ delay: 0.35 }}>
             <Card className="border-border/50">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base">借出记录</CardTitle>
+                <CardTitle className="text-base">Lending History</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border/50 text-xs text-muted-foreground">
-                        <th className="pb-3 text-left font-medium">交易ID</th>
-                        <th className="pb-3 text-left font-medium">借款方</th>
-                        <th className="pb-3 text-right font-medium">金额</th>
-                        <th className="pb-3 text-right font-medium">利率</th>
-                        <th className="pb-3 text-right font-medium">期限</th>
-                        <th className="pb-3 text-right font-medium">还款方式</th>
-                        <th className="pb-3 text-center font-medium">状态</th>
-                        <th className="pb-3 text-center font-medium">操作</th>
+                        <th className="pb-3 text-left font-medium">Transaction ID</th>
+                        <th className="pb-3 text-left font-medium">Borrower</th>
+                        <th className="pb-3 text-right font-medium">Amount</th>
+                        <th className="pb-3 text-right font-medium">Rate</th>
+                        <th className="pb-3 text-right font-medium">Term</th>
+                        <th className="pb-3 text-right font-medium">Repayment</th>
+                        <th className="pb-3 text-center font-medium">Status</th>
+                        <th className="pb-3 text-center font-medium">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -183,7 +183,7 @@ export default function LenderDashboard() {
                             <td className="py-3">{loan.counterpartyName}</td>
                             <td className="py-3 text-right font-medium">{loan.amount.toLocaleString()} {loan.currency}</td>
                             <td className="py-3 text-right text-emerald-400">{loan.interestRate}%</td>
-                            <td className="py-3 text-right">{loan.term}天</td>
+                            <td className="py-3 text-right">{loan.term} days</td>
                             <td className="py-3 text-right text-xs text-muted-foreground">{repayMethodMap[loan.repaymentMethod]}</td>
                             <td className="py-3 text-center">
                               <Badge variant={st.variant} className="text-xs">{st.label}</Badge>
@@ -191,7 +191,7 @@ export default function LenderDashboard() {
                             <td className="py-3 text-center">
                               <Link href={`/transaction/${loan.id}`}>
                                 <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
-                                  <Eye className="h-3 w-3" /> 详情
+                                  <Eye className="h-3 w-3" /> Details
                                 </Button>
                               </Link>
                             </td>
@@ -213,7 +213,7 @@ export default function LenderDashboard() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-amber-400" />
-                  <CardTitle className="text-base">AI Agent 推荐</CardTitle>
+                  <CardTitle className="text-base">AI Agent Recommendations</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -222,24 +222,24 @@ export default function LenderDashboard() {
                     <div className="mb-2 flex items-center justify-between">
                       <span className="font-medium">{rec.borrowerName}</span>
                       <Badge className="bg-emerald-500/20 text-emerald-400 text-xs">
-                        匹配 {rec.matchScore}%
+                        Match {rec.matchScore}%
                       </Badge>
                     </div>
                     <div className="mb-3 grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                      <span>金额: {rec.amount.toLocaleString()} {rec.currency}</span>
-                      <span>利率: {rec.interestRate}%</span>
-                      <span>期限: {rec.term}天</span>
-                      <span>信用: {rec.borrowerCredit}分</span>
+                      <span>Amount: {rec.amount.toLocaleString()} {rec.currency}</span>
+                      <span>Rate: {rec.interestRate}%</span>
+                      <span>Term: {rec.term} days</span>
+                      <span>Credit: {rec.borrowerCredit} pts</span>
                     </div>
                     <p className="mb-3 text-xs text-muted-foreground">💡 {rec.reason}</p>
                     <div className="flex gap-2">
                       <Link href="/match/results" className="flex-1">
                         <Button size="sm" className="w-full gap-1 bg-emerald-600 text-xs hover:bg-emerald-700">
-                          接受 <ExternalLink className="h-3 w-3" />
+                          Accept <ExternalLink className="h-3 w-3" />
                         </Button>
                       </Link>
                       <Button size="sm" variant="outline" className="text-xs border-border/50">
-                        忽略
+                        Ignore
                       </Button>
                     </div>
                   </div>
@@ -253,7 +253,7 @@ export default function LenderDashboard() {
             <Card className="border-border/50">
               <CardContent className="p-5">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">NGN 余额</span>
+                  <span className="text-sm text-muted-foreground">NGN Balance</span>
                   <span className="text-xs text-muted-foreground">₦</span>
                 </div>
                 <div className="mt-1 text-xl font-bold">₦{lenderUser.walletBalances.NGN.toLocaleString()}</div>

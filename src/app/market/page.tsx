@@ -13,10 +13,10 @@ import { Badge } from "@/components/ui/badge"
 import { marketOrders } from "@/data/mock"
 
 const repayMethodMap: Record<string, string> = {
-  bullet: "到期还本付息",
-  equal_installment: "等额本息",
-  interest_first: "先息后本",
-  equal_principal: "等额本金",
+  bullet: "Bullet",
+  equal_installment: "Equal Installment",
+  interest_first: "Interest First",
+  equal_principal: "Equal Principal",
 }
 
 export default function MarketPage() {
@@ -43,12 +43,12 @@ export default function MarketPage() {
         {/* Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-2xl font-bold sm:text-3xl">挂单市场</h1>
-            <p className="mt-1 text-muted-foreground">浏览所有公开挂单，寻找最优匹配</p>
+            <h1 className="text-2xl font-bold sm:text-3xl">Order Book Market</h1>
+            <p className="mt-1 text-muted-foreground">Browse all open orders, find the best match</p>
           </div>
           <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-secondary/30 px-3 py-1.5 text-xs text-muted-foreground">
             <RefreshCw className="h-3 w-3 animate-spin text-emerald-400" style={{ animationDuration: "3s" }} />
-            下次刷新: {formatTime(countdown)}
+            Next refresh: {formatTime(countdown)}
           </div>
         </div>
 
@@ -61,7 +61,7 @@ export default function MarketPage() {
               </div>
               <div>
                 <div className="text-xl font-bold">{marketOrders.length}</div>
-                <div className="text-xs text-muted-foreground">当前挂单总数</div>
+                <div className="text-xs text-muted-foreground">Total Open Orders</div>
               </div>
             </CardContent>
           </Card>
@@ -72,7 +72,7 @@ export default function MarketPage() {
               </div>
               <div>
                 <div className="text-xl font-bold">{avgRate.toFixed(1)}%</div>
-                <div className="text-xs text-muted-foreground">平均利率</div>
+                <div className="text-xs text-muted-foreground">Average Rate</div>
               </div>
             </CardContent>
           </Card>
@@ -82,8 +82,8 @@ export default function MarketPage() {
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <div className="text-xl font-bold">60天</div>
-                <div className="text-xs text-muted-foreground">最活跃期限</div>
+                <div className="text-xl font-bold">60 days</div>
+                <div className="text-xs text-muted-foreground">Most Active Term</div>
               </div>
             </CardContent>
           </Card>
@@ -97,7 +97,7 @@ export default function MarketPage() {
             className={`gap-2 ${tab === "lend" ? "bg-emerald-600 hover:bg-emerald-700" : "border-border/50"}`}
           >
             <DollarSign className="h-4 w-4" />
-            出借挂单
+            Lending Orders
             <Badge variant="secondary" className="ml-1 text-xs">{lendCount}</Badge>
           </Button>
           <Button
@@ -106,7 +106,7 @@ export default function MarketPage() {
             className={`gap-2 ${tab === "borrow" ? "bg-cyan-600 hover:bg-cyan-700" : "border-border/50"}`}
           >
             <Users className="h-4 w-4" />
-            借款挂单
+            Borrowing Orders
             <Badge variant="secondary" className="ml-1 text-xs">{borrowCount}</Badge>
           </Button>
         </div>
@@ -119,17 +119,17 @@ export default function MarketPage() {
                 <thead>
                   <tr className="border-b border-border/50 text-xs text-muted-foreground">
                     <th className="px-4 py-3 text-left font-medium">ID</th>
-                    <th className="px-4 py-3 text-right font-medium">金额</th>
+                    <th className="px-4 py-3 text-right font-medium">Amount</th>
                     <th className="px-4 py-3 text-right font-medium">
-                      {tab === "lend" ? "利率" : "最高利率"}
+                      {tab === "lend" ? "Rate" : "Max Rate"}
                     </th>
-                    <th className="px-4 py-3 text-right font-medium">期限</th>
-                    <th className="px-4 py-3 text-left font-medium">还款方式</th>
-                    <th className="px-4 py-3 text-center font-medium">质押</th>
-                    {tab === "lend" && <th className="px-4 py-3 text-center font-medium">最低信用分</th>}
-                    {tab === "borrow" && <th className="px-4 py-3 text-left font-medium">借款方</th>}
-                    <th className="px-4 py-3 text-left font-medium">发布时间</th>
-                    <th className="px-4 py-3 text-center font-medium">操作</th>
+                    <th className="px-4 py-3 text-right font-medium">Term</th>
+                    <th className="px-4 py-3 text-left font-medium">Repayment</th>
+                    <th className="px-4 py-3 text-center font-medium">Collateral</th>
+                    {tab === "lend" && <th className="px-4 py-3 text-center font-medium">Min Credit</th>}
+                    {tab === "borrow" && <th className="px-4 py-3 text-left font-medium">Borrower</th>}
+                    <th className="px-4 py-3 text-left font-medium">Posted</th>
+                    <th className="px-4 py-3 text-center font-medium">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,13 +148,13 @@ export default function MarketPage() {
                       <td className={`px-4 py-3 text-right font-medium ${tab === "lend" ? "text-emerald-400" : "text-amber-400"}`}>
                         {order.interestRate}%
                       </td>
-                      <td className="px-4 py-3 text-right">{order.term}天</td>
+                      <td className="px-4 py-3 text-right">{order.term} days</td>
                       <td className="px-4 py-3 text-xs">{repayMethodMap[order.repaymentMethod]}</td>
                       <td className="px-4 py-3 text-center">
                         {order.collateralRequired ? (
                           <Badge className="bg-emerald-500/20 text-emerald-400 text-xs">{order.collateralRate}%</Badge>
                         ) : (
-                          <span className="text-xs text-muted-foreground">无</span>
+                          <span className="text-xs text-muted-foreground">None</span>
                         )}
                       </td>
                       {tab === "lend" && (
@@ -170,13 +170,13 @@ export default function MarketPage() {
                         <td className="px-4 py-3 text-xs">{order.counterpartyName || "—"}</td>
                       )}
                       <td className="px-4 py-3 text-xs text-muted-foreground">
-                        {new Date(order.createdAt).toLocaleDateString("zh-CN", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                        {new Date(order.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                       </td>
                       <td className="px-4 py-3 text-center">
                         <div className="flex items-center justify-center gap-1">
                           <Link href="/match/results">
                             <Button size="sm" className="h-7 gap-1 bg-emerald-600 text-xs hover:bg-emerald-700">
-                              <Zap className="h-3 w-3" /> 匹配
+                              <Zap className="h-3 w-3" /> Match
                             </Button>
                           </Link>
                         </div>

@@ -87,7 +87,7 @@ export default function LandingPage() {
           <FadeIn>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 text-sm text-emerald-400">
               <Zap className="h-3.5 w-3.5" />
-              AI 驱动的智能借贷平台
+              AI-Powered Smart Lending Platform
             </div>
           </FadeIn>
 
@@ -100,9 +100,9 @@ export default function LandingPage() {
 
           <FadeIn delay={0.2}>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-              智能匹配，全球流动性，非洲市场机遇。
+              AI-powered matching, global liquidity, African market opportunities.
               <br className="hidden sm:block" />
-              让借贷更简单、更透明、更安全。
+              Making lending simpler, more transparent, and more secure.
             </p>
           </FadeIn>
 
@@ -110,12 +110,12 @@ export default function LandingPage() {
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link href="/post/lend">
                 <Button size="lg" className="gap-2 bg-emerald-600 px-8 text-base hover:bg-emerald-700">
-                  开始出借 <ArrowRight className="h-4 w-4" />
+                  Start Lending <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/post/borrow">
                 <Button size="lg" variant="outline" className="gap-2 px-8 text-base border-emerald-500/30 hover:bg-emerald-500/10">
-                  我要借款 <ArrowRight className="h-4 w-4" />
+                  I Want to Borrow <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
             </div>
@@ -138,8 +138,8 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <FadeIn>
             <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">产品亮点</h2>
-              <p className="text-muted-foreground">三大核心能力，重新定义 P2P 借贷体验</p>
+              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Key Features</h2>
+              <p className="text-muted-foreground">Three core capabilities redefining the P2P lending experience</p>
             </div>
           </FadeIn>
 
@@ -147,24 +147,24 @@ export default function LandingPage() {
             {[
               {
                 icon: Brain,
-                title: "AI 智能匹配",
-                desc: "基于多维度数据分析的智能匹配引擎，实时评估信用风险，为借贷双方找到最优对手方。匹配准确率超过94%。",
+                title: "AI Matching Engine",
+                desc: "Smart matching engine powered by multi-dimensional data analysis. Real-time credit risk assessment to find the optimal counterparty for both lenders and borrowers. Match accuracy exceeds 94%.",
                 gradient: "from-emerald-500/20 to-emerald-500/5",
                 iconColor: "text-emerald-400",
                 glow: "glow-green",
               },
               {
                 icon: DollarSign,
-                title: "$U 收益型存款",
-                desc: "闲置资金自动转化为$U生息资产，享受基础4.5% APY收益。$U可直接用于平台借贷操作，资金永不闲置。",
+                title: "$U Yield Deposits",
+                desc: "Idle funds automatically convert to $U yield-bearing assets, earning a base 4.5% APY. $U can be used directly for platform lending operations—your money never sits idle.",
                 gradient: "from-cyan-500/20 to-cyan-500/5",
                 iconColor: "text-cyan-400",
                 glow: "glow-blue",
               },
               {
                 icon: ShieldCheck,
-                title: "严格风控体系",
-                desc: "八重风控防护体系：KYC/KYB验证、AI信用评估、渐进式额度、质押管理、实时监控、多级催收。",
+                title: "Robust Risk Control",
+                desc: "8-layer risk protection system: KYC/KYB verification, AI credit assessment, progressive limits, collateral management, real-time monitoring, multi-tier collection.",
                 gradient: "from-violet-500/20 to-violet-500/5",
                 iconColor: "text-violet-400",
                 glow: "",
@@ -191,17 +191,17 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <FadeIn>
             <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">如何运作</h2>
-              <p className="text-muted-foreground">四步开启您的借贷之旅</p>
+              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">How It Works</h2>
+              <p className="text-muted-foreground">Four steps to start your lending journey</p>
             </div>
           </FadeIn>
 
           <div className="grid gap-8 md:grid-cols-4">
             {[
-              { icon: UserPlus, title: "注册验证", desc: "完成KYC/KYB身份验证，快速获得平台准入资格" },
-              { icon: Wallet, title: "充值资金", desc: "支持NGN、USDT、USDC多币种充值，自动转换$U生息" },
-              { icon: FileText, title: "发布需求", desc: "灵活设置金额、利率、期限等借贷条件" },
-              { icon: Zap, title: "AI 匹配成交", desc: "AI Agent秒级匹配最优对手方，自动撮合交易" },
+              { icon: UserPlus, title: "Register & Verify", desc: "Complete KYC/KYB identity verification to gain platform access" },
+              { icon: Wallet, title: "Deposit Funds", desc: "Support NGN, USDT, USDC multi-currency deposits, auto-convert to $U for yield" },
+              { icon: FileText, title: "Post Requirements", desc: "Flexibly set amount, rate, term and other lending conditions" },
+              { icon: Zap, title: "AI Match & Execute", desc: "AI Agent matches optimal counterparties in seconds, auto-executes trades" },
             ].map((step, i) => (
               <FadeIn key={i} delay={i * 0.12}>
                 <div className="relative text-center">
@@ -231,15 +231,15 @@ export default function LandingPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <FadeIn>
               <div>
-                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-500">出借方</div>
-                <h2 className="mb-6 text-3xl font-bold">为什么在这里出借？</h2>
+                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-500">For Lenders</div>
+                <h2 className="mb-6 text-3xl font-bold">Why Lend Here?</h2>
                 <div className="space-y-4">
                   {[
-                    { icon: TrendingUp, text: "年化收益 15%-30%，远超传统银行存款" },
-                    { icon: Globe, text: "进入高增长非洲市场，多元化投资组合" },
-                    { icon: ShieldCheck, text: "八重风控体系保障资金安全" },
-                    { icon: Brain, text: "AI Agent 自动匹配优质借款方" },
-                    { icon: DollarSign, text: "$U 生息功能，资金等待期也有收益" },
+                    { icon: TrendingUp, text: "15%-30% annual returns, far exceeding traditional bank deposits" },
+                    { icon: Globe, text: "Access high-growth African markets, diversify your portfolio" },
+                    { icon: ShieldCheck, text: "8-layer risk control system protecting your capital" },
+                    { icon: Brain, text: "AI Agent auto-matches quality borrowers" },
+                    { icon: DollarSign, text: "$U yield feature—earn even while waiting for matches" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
@@ -254,12 +254,12 @@ export default function LandingPage() {
             <FadeIn delay={0.2}>
               <Card className="border-emerald-500/10 bg-gradient-to-br from-emerald-500/5 to-transparent">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 text-sm font-medium text-muted-foreground">收益对比（年化）</h3>
+                  <h3 className="mb-4 text-sm font-medium text-muted-foreground">Yield Comparison (Annual)</h3>
                   <div className="space-y-4">
                     {[
-                      { label: "银行存款", rate: "2-4%", width: "15%", color: "bg-muted-foreground/30" },
-                      { label: "$U 生息", rate: "4.5%", width: "22%", color: "bg-cyan-500" },
-                      { label: "$U + 借贷", rate: "15-30%", width: "90%", color: "bg-emerald-500" },
+                      { label: "Bank Deposit", rate: "2-4%", width: "15%", color: "bg-muted-foreground/30" },
+                      { label: "$U Yield", rate: "4.5%", width: "22%", color: "bg-cyan-500" },
+                      { label: "$U + Lending", rate: "15-30%", width: "90%", color: "bg-emerald-500" },
                     ].map((item, i) => (
                       <div key={i}>
                         <div className="mb-1 flex justify-between text-sm">
@@ -292,10 +292,10 @@ export default function LandingPage() {
             <FadeIn delay={0.2} className="order-2 lg:order-1">
               <Card className="border-cyan-500/10 bg-gradient-to-br from-cyan-500/5 to-transparent">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 text-sm font-medium text-muted-foreground">利率对比</h3>
+                  <h3 className="mb-4 text-sm font-medium text-muted-foreground">Rate Comparison</h3>
                   <div className="space-y-4">
                     {[
-                      { label: "传统银行贷款", rate: "25-45%", width: "85%", color: "bg-muted-foreground/30" },
+                      { label: "Traditional Bank Loans", rate: "25-45%", width: "85%", color: "bg-muted-foreground/30" },
                       { label: "Microfinance", rate: "30-60%", width: "95%", color: "bg-orange-500/50" },
                       { label: "Wello P2P", rate: "12-25%", width: "45%", color: "bg-cyan-500" },
                     ].map((item, i) => (
@@ -321,15 +321,15 @@ export default function LandingPage() {
             </FadeIn>
             <FadeIn className="order-1 lg:order-2">
               <div>
-                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-cyan-500">借款方</div>
-                <h2 className="mb-6 text-3xl font-bold">为什么在这里借款？</h2>
+                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-cyan-500">For Borrowers</div>
+                <h2 className="mb-6 text-3xl font-bold">Why Borrow Here?</h2>
                 <div className="space-y-4">
                   {[
-                    { icon: TrendingUp, text: "利率低至 12%，远低于传统渠道" },
-                    { icon: Clock, text: "AI 秒级审批，最快24小时放款" },
-                    { icon: CheckCircle2, text: "灵活还款方式，匹配业务现金流" },
-                    { icon: Users, text: "建立信用记录，额度逐步提升至 $500,000" },
-                    { icon: Globe, text: "连接全球出借方，资金来源多元化" },
+                    { icon: TrendingUp, text: "Rates as low as 12%, far below traditional channels" },
+                    { icon: Clock, text: "AI instant approval, funding as fast as 24 hours" },
+                    { icon: CheckCircle2, text: "Flexible repayment options matching your cash flow" },
+                    { icon: Users, text: "Build credit history, progressively increase limits to $500,000" },
+                    { icon: Globe, text: "Connect with global lenders, diversified funding sources" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
@@ -350,17 +350,17 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <FadeIn>
             <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">平台数据</h2>
-              <p className="text-muted-foreground">持续增长的全球 P2P 借贷网络</p>
+              <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Platform Statistics</h2>
+              <p className="text-muted-foreground">A continuously growing global P2P lending network</p>
             </div>
           </FadeIn>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "总成交额", value: platformStats.totalVolume, prefix: "$", suffix: "", icon: BarChart3, color: "text-emerald-400" },
-              { label: "活跃用户", value: platformStats.activeUsers, prefix: "", suffix: "+", icon: Users, color: "text-cyan-400" },
-              { label: "平均 APY", value: platformStats.avgAPY, prefix: "", suffix: "%", icon: TrendingUp, color: "text-violet-400", decimals: 1 },
-              { label: "匹配成功率", value: platformStats.matchRate, prefix: "", suffix: "%", icon: Zap, color: "text-amber-400", decimals: 1 },
+              { label: "Total Volume", value: platformStats.totalVolume, prefix: "$", suffix: "", icon: BarChart3, color: "text-emerald-400" },
+              { label: "Active Users", value: platformStats.activeUsers, prefix: "", suffix: "+", icon: Users, color: "text-cyan-400" },
+              { label: "Average APY", value: platformStats.avgAPY, prefix: "", suffix: "%", icon: TrendingUp, color: "text-violet-400", decimals: 1 },
+              { label: "Match Rate", value: platformStats.matchRate, prefix: "", suffix: "%", icon: Zap, color: "text-amber-400", decimals: 1 },
             ].map((stat, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <Card className="border-border/50 bg-gradient-to-b from-secondary/50 to-transparent text-center">
@@ -385,7 +385,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <FadeIn>
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold">常见问题</h2>
+              <h2 className="mb-4 text-3xl font-bold">Frequently Asked Questions</h2>
             </div>
           </FadeIn>
 
@@ -421,20 +421,20 @@ export default function LandingPage() {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <FadeIn>
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl">
-              开始您的 <span className="gradient-text">智能借贷</span> 之旅
+              Start Your <span className="gradient-text">Smart Lending</span> Journey
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-muted-foreground">
-              加入 Wello，体验 AI 驱动的 P2P 借贷平台。更高收益，更低利率，更安全的交易。
+              Join Wello and experience AI-powered P2P lending. Higher returns, lower rates, safer transactions.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link href="/register">
                 <Button size="lg" className="gap-2 bg-emerald-600 px-8 text-base hover:bg-emerald-700">
-                  立即注册 <ArrowRight className="h-4 w-4" />
+                  Register Now <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/risk-control">
                 <Button size="lg" variant="outline" className="gap-2 px-8 text-base border-border/50">
-                  了解风控体系
+                  Learn About Risk Control
                 </Button>
               </Link>
             </div>
@@ -453,26 +453,26 @@ export default function LandingPage() {
                 </div>
                 <span className="font-bold">Wello</span>
               </div>
-              <p className="text-sm text-muted-foreground">AI 驱动的 P2P 借贷平台，连接全球出借方与非洲优质借款企业。</p>
+              <p className="text-sm text-muted-foreground">AI-powered P2P lending platform connecting global lenders with quality African borrowing enterprises.</p>
             </div>
             <div>
-              <h4 className="mb-3 text-sm font-semibold">产品</h4>
+              <h4 className="mb-3 text-sm font-semibold">Products</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <Link href="/post/lend" className="block hover:text-foreground">出借</Link>
-                <Link href="/post/borrow" className="block hover:text-foreground">借款</Link>
-                <Link href="/market" className="block hover:text-foreground">市场</Link>
+                <Link href="/post/lend" className="block hover:text-foreground">Lend</Link>
+                <Link href="/post/borrow" className="block hover:text-foreground">Borrow</Link>
+                <Link href="/market" className="block hover:text-foreground">Market</Link>
               </div>
             </div>
             <div>
-              <h4 className="mb-3 text-sm font-semibold">关于</h4>
+              <h4 className="mb-3 text-sm font-semibold">About</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <Link href="/risk-control" className="block hover:text-foreground">风控体系</Link>
-                <span className="block">帮助中心</span>
-                <span className="block">API 文档</span>
+                <Link href="/risk-control" className="block hover:text-foreground">Risk Control</Link>
+                <span className="block">Help Center</span>
+                <span className="block">API Docs</span>
               </div>
             </div>
             <div>
-              <h4 className="mb-3 text-sm font-semibold">联系我们</h4>
+              <h4 className="mb-3 text-sm font-semibold">Contact Us</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
                 <span className="block">support@wello.finance</span>
                 <span className="block">Twitter @WelloFinance</span>
@@ -483,7 +483,7 @@ export default function LandingPage() {
           <Separator className="my-8" />
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground sm:flex-row">
             <span>© 2024 Wello Finance. All rights reserved.</span>
-            <span>本平台为技术演示，不构成投资建议。</span>
+            <span>This platform is a technical demo and does not constitute investment advice.</span>
           </div>
         </div>
       </footer>

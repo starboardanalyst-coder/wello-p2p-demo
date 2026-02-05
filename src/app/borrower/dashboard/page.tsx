@@ -20,10 +20,10 @@ const CreditBreakdown = dynamic(() => import("@/components/charts/CreditBreakdow
 const fadeUp = { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 } }
 
 const statusMap: Record<string, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
-  active: { label: "进行中", variant: "default" },
-  completed: { label: "已完成", variant: "secondary" },
-  overdue: { label: "逾期", variant: "destructive" },
-  pending: { label: "待匹配", variant: "outline" },
+  active: { label: "Active", variant: "default" },
+  completed: { label: "Completed", variant: "secondary" },
+  overdue: { label: "Overdue", variant: "destructive" },
+  pending: { label: "Pending Match", variant: "outline" },
 }
 
 export default function BorrowerDashboard() {
@@ -40,9 +40,9 @@ export default function BorrowerDashboard() {
       {/* Header */}
       <motion.div {...fadeUp} className="mb-8">
         <h1 className="text-2xl font-bold sm:text-3xl">
-          欢迎回来，<span className="gradient-text">{borrowerUser.name}</span>
+          Welcome back, <span className="gradient-text">{borrowerUser.name}</span>
         </h1>
-        <p className="mt-1 text-muted-foreground">借款方控制中心 · {borrowerUser.company}</p>
+        <p className="mt-1 text-muted-foreground">Borrower Control Center · {borrowerUser.company}</p>
       </motion.div>
 
       {/* Top Cards */}
@@ -52,14 +52,14 @@ export default function BorrowerDashboard() {
           <Card className="border-border/50 bg-gradient-to-br from-violet-500/10 to-transparent">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">额度等级</span>
+                <span className="text-sm text-muted-foreground">Credit Level</span>
                 <CreditCard className="h-4 w-4 text-violet-400" />
               </div>
               <div className="mt-2 flex items-baseline gap-2">
                 <span className="text-3xl font-bold text-violet-400">Lv.{borrowerUser.creditLevel}</span>
-                <span className="text-sm text-muted-foreground">中级</span>
+                <span className="text-sm text-muted-foreground">Intermediate</span>
               </div>
-              <div className="mt-1 text-xs text-muted-foreground">升级条件: 完成8笔借款, 还款率&gt;95%</div>
+              <div className="mt-1 text-xs text-muted-foreground">Upgrade requirements: Complete 8 loans, on-time rate &gt;95%</div>
             </CardContent>
           </Card>
         </motion.div>
@@ -69,12 +69,12 @@ export default function BorrowerDashboard() {
           <Card className="border-border/50 bg-gradient-to-br from-emerald-500/10 to-transparent glow-green">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">可用额度</span>
+                <span className="text-sm text-muted-foreground">Available Credit</span>
                 <ArrowUpRight className="h-4 w-4 text-emerald-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">${available.toLocaleString()}</div>
               <Progress value={100 - usedPct} className="mt-2 h-1.5" />
-              <div className="mt-1 text-xs text-muted-foreground">总额度 ${borrowerUser.totalLimit?.toLocaleString()}</div>
+              <div className="mt-1 text-xs text-muted-foreground">Total Limit ${borrowerUser.totalLimit?.toLocaleString()}</div>
             </CardContent>
           </Card>
         </motion.div>
@@ -84,12 +84,12 @@ export default function BorrowerDashboard() {
           <Card className="border-border/50">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">已用额度</span>
+                <span className="text-sm text-muted-foreground">Used Credit</span>
                 <TrendingUp className="h-4 w-4 text-amber-400" />
               </div>
               <div className="mt-2 text-2xl font-bold">${borrowerUser.usedLimit?.toLocaleString()}</div>
               <Progress value={usedPct} className="mt-2 h-1.5" />
-              <div className="mt-1 text-xs text-muted-foreground">使用率 {usedPct.toFixed(0)}%</div>
+              <div className="mt-1 text-xs text-muted-foreground">Utilization {usedPct.toFixed(0)}%</div>
             </CardContent>
           </Card>
         </motion.div>
@@ -99,12 +99,12 @@ export default function BorrowerDashboard() {
           <Card className="border-border/50 bg-gradient-to-br from-cyan-500/10 to-transparent">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">信用评分</span>
+                <span className="text-sm text-muted-foreground">Credit Score</span>
                 <Sparkles className="h-4 w-4 text-cyan-400" />
               </div>
               <div className="mt-2 text-2xl font-bold text-emerald-400">{borrowerUser.creditScore}</div>
               <div className="mt-1 flex items-center gap-1 text-xs text-emerald-400">
-                <ArrowUpRight className="h-3 w-3" /> +3 本月
+                <ArrowUpRight className="h-3 w-3" /> +3 this month
               </div>
             </CardContent>
           </Card>
@@ -115,12 +115,12 @@ export default function BorrowerDashboard() {
       <motion.div {...fadeUp} transition={{ delay: 0.25 }} className="mb-8 flex flex-wrap gap-3">
         <Link href="/post/borrow">
           <Button className="gap-2 bg-emerald-600 hover:bg-emerald-700">
-            <Plus className="h-4 w-4" /> 发布借款需求
+            <Plus className="h-4 w-4" /> Post Borrowing Request
           </Button>
         </Link>
         <Link href="/market">
           <Button variant="outline" className="gap-2 border-border/50">
-            <Store className="h-4 w-4" /> 浏览市场
+            <Store className="h-4 w-4" /> Browse Market
           </Button>
         </Link>
       </motion.div>
@@ -132,20 +132,20 @@ export default function BorrowerDashboard() {
           <motion.div {...fadeUp} transition={{ delay: 0.3 }}>
             <Card className="border-border/50">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base">借款记录</CardTitle>
+                <CardTitle className="text-base">Borrowing History</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border/50 text-xs text-muted-foreground">
-                        <th className="pb-3 text-left font-medium">交易ID</th>
-                        <th className="pb-3 text-left font-medium">出借方</th>
-                        <th className="pb-3 text-right font-medium">金额</th>
-                        <th className="pb-3 text-right font-medium">利率</th>
-                        <th className="pb-3 text-right font-medium">期限</th>
-                        <th className="pb-3 text-center font-medium">状态</th>
-                        <th className="pb-3 text-center font-medium">操作</th>
+                        <th className="pb-3 text-left font-medium">Transaction ID</th>
+                        <th className="pb-3 text-left font-medium">Lender</th>
+                        <th className="pb-3 text-right font-medium">Amount</th>
+                        <th className="pb-3 text-right font-medium">Rate</th>
+                        <th className="pb-3 text-right font-medium">Term</th>
+                        <th className="pb-3 text-center font-medium">Status</th>
+                        <th className="pb-3 text-center font-medium">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -157,14 +157,14 @@ export default function BorrowerDashboard() {
                             <td className="py-3">{loan.counterpartyName}</td>
                             <td className="py-3 text-right font-medium">{loan.amount.toLocaleString()} {loan.currency}</td>
                             <td className="py-3 text-right text-cyan-400">{loan.interestRate}%</td>
-                            <td className="py-3 text-right">{loan.term}天</td>
+                            <td className="py-3 text-right">{loan.term} days</td>
                             <td className="py-3 text-center">
                               <Badge variant={st?.variant ?? "outline"} className="text-xs">{st?.label ?? loan.status}</Badge>
                             </td>
                             <td className="py-3 text-center">
                               <Link href={`/transaction/${loan.id}`}>
                                 <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
-                                  <Eye className="h-3 w-3" /> 详情
+                                  <Eye className="h-3 w-3" /> Details
                                 </Button>
                               </Link>
                             </td>
@@ -184,7 +184,7 @@ export default function BorrowerDashboard() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-cyan-400" />
-                  <CardTitle className="text-base">还款计划</CardTitle>
+                  <CardTitle className="text-base">Repayment Schedule</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
@@ -200,23 +200,23 @@ export default function BorrowerDashboard() {
                           <Clock className="h-5 w-5 text-amber-400" />
                         )}
                         <div>
-                          <div className="text-sm font-medium">第{inst.number}期 · {inst.loanId}</div>
-                          <div className="text-xs text-muted-foreground">到期日: {inst.dueDate}</div>
+                          <div className="text-sm font-medium">Installment #{inst.number} · {inst.loanId}</div>
+                          <div className="text-xs text-muted-foreground">Due: {inst.dueDate}</div>
                         </div>
                       </div>
                       <div className="text-right">
                         <div className="text-sm font-medium">${inst.total.toLocaleString()}</div>
                         <div className="text-xs text-muted-foreground">
-                          本金 ${inst.principal.toLocaleString()} + 利息 ${inst.interest.toLocaleString()}
+                          Principal ${inst.principal.toLocaleString()} + Interest ${inst.interest.toLocaleString()}
                         </div>
                       </div>
                       <div>
                         {inst.status === "paid" ? (
-                          <Badge variant="secondary" className="text-xs">已还</Badge>
+                          <Badge variant="secondary" className="text-xs">Paid</Badge>
                         ) : inst.status === "overdue" ? (
-                          <Badge variant="destructive" className="text-xs">逾期</Badge>
+                          <Badge variant="destructive" className="text-xs">Overdue</Badge>
                         ) : (
-                          <Button size="sm" className="h-7 bg-emerald-600 text-xs hover:bg-emerald-700">立即还款</Button>
+                          <Button size="sm" className="h-7 bg-emerald-600 text-xs hover:bg-emerald-700">Pay Now</Button>
                         )}
                       </div>
                     </div>
@@ -233,7 +233,7 @@ export default function BorrowerDashboard() {
           <motion.div {...fadeUp} transition={{ delay: 0.3 }}>
             <Card className="border-border/50">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">信用评分详情</CardTitle>
+                <CardTitle className="text-base">Credit Score Details</CardTitle>
               </CardHeader>
               <CardContent>
                 <CreditGauge score={borrowerUser.creditScore ?? 0} />
@@ -256,7 +256,7 @@ export default function BorrowerDashboard() {
           <motion.div {...fadeUp} transition={{ delay: 0.35 }}>
             <Card className="border-border/50">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">评分构成</CardTitle>
+                <CardTitle className="text-base">Score Breakdown</CardTitle>
               </CardHeader>
               <CardContent>
                 <CreditBreakdown />
@@ -278,18 +278,18 @@ export default function BorrowerDashboard() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-amber-400" />
-                  <CardTitle className="text-base">AI 建议</CardTitle>
+                  <CardTitle className="text-base">AI Suggestions</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-3 text-xs text-muted-foreground">
-                  📈 您的信用评分本月上升了3分。继续保持按时还款，有望在下月升级到 Lv.4。
+                  📈 Your credit score increased by 3 points this month. Keep up the on-time payments and you could upgrade to Lv.4 next month.
                 </div>
                 <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-3 text-xs text-muted-foreground">
-                  💡 当前市场上有3笔出借挂单的利率低于您上次借款利率，建议关注。
+                  💡 There are 3 lending orders in the market with rates lower than your last loan. Worth checking out.
                 </div>
                 <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-3 text-xs text-muted-foreground">
-                  ⏰ 您有1笔还款将于12月20日到期，请确保账户余额充足。
+                  ⏰ You have 1 payment due on December 20th. Please ensure sufficient account balance.
                 </div>
               </CardContent>
             </Card>

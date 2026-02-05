@@ -28,12 +28,12 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 const navLinks = [
-  { href: "/lender/dashboard", label: "出借方 Dashboard", icon: LayoutDashboard },
-  { href: "/borrower/dashboard", label: "借款方 Dashboard", icon: Wallet },
-  { href: "/market", label: "市场", icon: Store },
-  { href: "/post/lend", label: "发布出借", icon: FileText },
-  { href: "/post/borrow", label: "发布借款", icon: FileText },
-  { href: "/risk-control", label: "风控体系", icon: Shield },
+  { href: "/lender/dashboard", label: "Lender Dashboard", icon: LayoutDashboard },
+  { href: "/borrower/dashboard", label: "Borrower Dashboard", icon: Wallet },
+  { href: "/market", label: "Market", icon: Store },
+  { href: "/post/lend", label: "Post Lending", icon: FileText },
+  { href: "/post/borrow", label: "Post Borrowing", icon: FileText },
+  { href: "/risk-control", label: "Risk Control", icon: Shield },
 ]
 
 export default function Navbar() {
@@ -88,25 +88,25 @@ export default function Navbar() {
                     W
                   </AvatarFallback>
                 </Avatar>
-                <span className="hidden text-sm sm:inline">Demo 用户</span>
+                <span className="hidden text-sm sm:inline">Demo User</span>
                 <ChevronDown className="h-3 w-3 text-muted-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem asChild>
                 <Link href="/lender/dashboard" className="gap-2">
-                  <User className="h-4 w-4" /> 出借方面板
+                  <User className="h-4 w-4" /> Lender Panel
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/borrower/dashboard" className="gap-2">
-                  <Wallet className="h-4 w-4" /> 借款方面板
+                  <Wallet className="h-4 w-4" /> Borrower Panel
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/register" className="gap-2">
-                  <LogOut className="h-4 w-4" /> 注册流程
+                  <LogOut className="h-4 w-4" /> Registration Flow
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

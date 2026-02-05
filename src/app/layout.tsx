@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Wello — P2P Lending, Powered by AI",
-  description: "智能匹配，全球流动性，非洲市场机遇。AI驱动的P2P借贷平台。",
+  description: "AI-powered matching, global liquidity, African market opportunities. The next-generation P2P lending platform.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN" className="dark">
+    <html lang="en" className="dark">
       <body className={`${inter.className} min-h-screen bg-background antialiased`}>
         <Navbar />
         <main>{children}</main>

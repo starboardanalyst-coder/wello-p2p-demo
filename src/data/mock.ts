@@ -87,18 +87,18 @@ export interface MatchResult {
 export const lenderUser: User = {
   id: 'L001',
   role: 'lender',
-  name: '张伟',
+  name: 'John Smith',
   company: 'Horizon Capital Ltd.',
-  email: 'zhang.wei@horizon.com',
+  email: 'john.smith@horizon.com',
   walletBalances: { NGN: 2500000, USDT: 45000, USDC: 32000, U: 18500 },
 }
 
 export const borrowerUser: User = {
   id: 'B001',
   role: 'borrower',
-  name: '李明',
+  name: 'Michael Chen',
   company: 'Sahel Trade Co.',
-  email: 'liming@saheltrade.ng',
+  email: 'michael@saheltrade.ng',
   walletBalances: { NGN: 850000, USDT: 5200, USDC: 3100, U: 1200 },
   creditScore: 78,
   creditLevel: 3,
@@ -265,10 +265,10 @@ export const repaymentSchedules: RepaymentSchedule[] = [
 
 // ─── Credit Score Breakdown ───
 export const creditScoreBreakdown = [
-  { category: '还款历史', score: 85, weight: 40 },
-  { category: '交易频率', score: 72, weight: 20 },
-  { category: '运营稳定性', score: 68, weight: 20 },
-  { category: '信息完整度', score: 90, weight: 20 },
+  { category: 'Repayment History', score: 85, weight: 40 },
+  { category: 'Transaction Frequency', score: 72, weight: 20 },
+  { category: 'Operational Stability', score: 68, weight: 20 },
+  { category: 'Profile Completeness', score: 90, weight: 20 },
 ]
 
 // ─── Agent Recommendations ───
@@ -282,8 +282,8 @@ export const agentRecommendations = [
     term: 60,
     borrowerCredit: 82,
     borrowerName: 'Sahel Trade Co.',
-    industry: '跨境贸易',
-    reason: '信用评分高，还款历史优秀，行业匹配度高',
+    industry: 'Cross-border Trade',
+    reason: 'High credit score, excellent repayment history, strong industry match',
   },
   {
     id: 'REC-002',
@@ -294,8 +294,8 @@ export const agentRecommendations = [
     term: 90,
     borrowerCredit: 75,
     borrowerName: 'Abuja Logistics',
-    industry: '物流运输',
-    reason: '期限灵活，利率优于市场平均，质押物充足',
+    industry: 'Logistics',
+    reason: 'Flexible terms, above-market rate, adequate collateral',
   },
   {
     id: 'REC-003',
@@ -306,8 +306,8 @@ export const agentRecommendations = [
     term: 180,
     borrowerCredit: 85,
     borrowerName: 'Lagos Energy',
-    industry: '新能源',
-    reason: '大额稳定需求，优质企业，政府背书项目',
+    industry: 'Renewable Energy',
+    reason: 'Large stable demand, premium enterprise, government-backed project',
   },
 ]
 
@@ -341,9 +341,9 @@ export const matchResults: MatchResult[] = [
     interestRate: 20,
     term: 60,
     creditScore: 82,
-    repaymentMethod: '等额本息',
+    repaymentMethod: 'Equal Installment',
     collateral: true,
-    highlights: ['信用评分 82 分（优秀）', '按时还款率 96%', '行业匹配：跨境贸易', '质押率 130%'],
+    highlights: ['Credit Score 82 (Excellent)', 'On-time Rate 96%', 'Industry Match: Cross-border Trade', 'Collateral Rate 130%'],
     differences: [],
   },
   {
@@ -356,10 +356,10 @@ export const matchResults: MatchResult[] = [
     interestRate: 22,
     term: 90,
     creditScore: 75,
-    repaymentMethod: '先息后本',
+    repaymentMethod: 'Interest First',
     collateral: false,
-    highlights: ['利率高于市场均值', '交易次数 12 笔'],
-    differences: ['金额差异：-2,000 USDT', '无质押'],
+    highlights: ['Above-market rate', '12 transactions completed'],
+    differences: ['Amount difference: -2,000 USDT', 'No collateral'],
   },
   {
     id: 'MATCH-003',
@@ -371,10 +371,10 @@ export const matchResults: MatchResult[] = [
     interestRate: 18,
     term: 60,
     creditScore: 71,
-    repaymentMethod: '等额本息',
+    repaymentMethod: 'Equal Installment',
     collateral: true,
-    highlights: ['大额需求', '政府合作项目'],
-    differences: ['利率低于期望 -2%', '信用评分一般'],
+    highlights: ['Large demand', 'Government partnership project'],
+    differences: ['Rate below target -2%', 'Average credit score'],
   },
   {
     id: 'MATCH-004',
@@ -386,10 +386,10 @@ export const matchResults: MatchResult[] = [
     interestRate: 25,
     term: 30,
     creditScore: 65,
-    repaymentMethod: '到期还本付息',
+    repaymentMethod: 'Bullet',
     collateral: false,
-    highlights: ['短期高利率'],
-    differences: ['信用评分偏低', '无质押', '新用户，交易次数少'],
+    highlights: ['Short-term high rate'],
+    differences: ['Lower credit score', 'No collateral', 'New user, few transactions'],
   },
 ]
 
@@ -398,30 +398,30 @@ export const borrowerProfile: BorrowerProfile = {
   id: 'B002',
   companyName: 'Sahel Trade Co.',
   registrationNumber: 'RC-2019-0458723',
-  country: '尼日利亚',
-  industry: '跨境贸易',
+  country: 'Nigeria',
+  industry: 'Cross-border Trade',
   foundedYear: 2019,
   kybStatus: [
-    { item: '营业执照', verified: true },
-    { item: '法人身份证', verified: true },
-    { item: '银行开户证明', verified: true },
-    { item: '税务登记', verified: true },
-    { item: '运营数据审计', verified: true },
-    { item: '实地走访', verified: false },
+    { item: 'Business License', verified: true },
+    { item: 'Director ID', verified: true },
+    { item: 'Bank Account Proof', verified: true },
+    { item: 'Tax Registration', verified: true },
+    { item: 'Operational Audit', verified: true },
+    { item: 'Site Visit', verified: false },
   ],
-  fundUsage: '采购季节性农产品（可可豆、腰果），通过拉各斯港口出口至欧洲市场。预计采购周期60天，销售回款后偿还借款。',
+  fundUsage: 'Procurement of seasonal agricultural products (cocoa beans, cashews) for export to European markets via Lagos port. Expected procurement cycle of 60 days, repayment upon sales collection.',
   totalLoans: 8,
   totalAmount: 95000,
   onTimeRate: 96,
   avgTerm: 72,
   monthlyCashFlow: [42000, 38000, 55000, 48000, 62000, 58000, 71000, 65000, 78000, 72000, 85000, 80000],
-  businessScale: '中型企业',
+  businessScale: 'Medium Enterprise',
   employees: 45,
   creditScoreBreakdown: [
-    { category: '还款历史', score: 88, weight: 40 },
-    { category: '交易频率', score: 76, weight: 20 },
-    { category: '运营稳定性', score: 72, weight: 20 },
-    { category: '信息完整度', score: 92, weight: 20 },
+    { category: 'Repayment History', score: 88, weight: 40 },
+    { category: 'Transaction Frequency', score: 76, weight: 20 },
+    { category: 'Operational Stability', score: 72, weight: 20 },
+    { category: 'Profile Completeness', score: 92, weight: 20 },
   ],
 }
 
@@ -434,7 +434,7 @@ export const transactionDetail = {
   currency: 'USDT',
   interestRate: 18.5,
   term: 90,
-  repaymentMethod: '等额本息',
+  repaymentMethod: 'Equal Installment',
   createdAt: '2024-10-15',
   expiresAt: '2025-01-13',
   counterparty: {
@@ -453,22 +453,22 @@ export const transactionDetail = {
 
 // ─── Risk Control 8-Layer System ───
 export const riskLayers = [
-  { id: 1, name: 'KYC/KYB 身份验证', description: '多维度身份认证，企业资质审核，反欺诈筛查', icon: 'Shield', color: '#22c55e' },
-  { id: 2, name: 'AI 信用评估', description: '基于机器学习模型的信用评分，多维数据交叉验证', icon: 'Brain', color: '#3b82f6' },
-  { id: 3, name: '渐进式额度管理', description: '从小额开始，根据还款表现逐步提升额度', icon: 'TrendingUp', color: '#8b5cf6' },
-  { id: 4, name: '智能定价引擎', description: '基于风险等级的差异化利率，平衡收益与风险', icon: 'Calculator', color: '#f59e0b' },
-  { id: 5, name: '质押物管理', description: 'Crypto 质押自动清算，第三方保证金托管', icon: 'Lock', color: '#ef4444' },
-  { id: 6, name: '实时监控预警', description: '还款行为实时监控，异常交易即时告警', icon: 'Eye', color: '#06b6d4' },
-  { id: 7, name: '多级催收体系', description: 'AI 催收 → 人工催收 → 法务催收 → 资产处置', icon: 'AlertTriangle', color: '#f97316' },
-  { id: 8, name: '风险隔离机制', description: '单笔/单用户风险敞口限制，系统性风险防火墙', icon: 'ShieldCheck', color: '#10b981' },
+  { id: 1, name: 'KYC/KYB Identity Verification', description: 'Multi-dimensional identity authentication, business qualification review, anti-fraud screening', icon: 'Shield', color: '#22c55e' },
+  { id: 2, name: 'AI Credit Assessment', description: 'Machine learning-based credit scoring with multi-source data cross-validation', icon: 'Brain', color: '#3b82f6' },
+  { id: 3, name: 'Progressive Credit Limits', description: 'Start small, increase limits based on repayment performance', icon: 'TrendingUp', color: '#8b5cf6' },
+  { id: 4, name: 'Smart Pricing Engine', description: 'Risk-based differential pricing, balancing returns and risk', icon: 'Calculator', color: '#f59e0b' },
+  { id: 5, name: 'Collateral Management', description: 'Crypto collateral auto-liquidation, third-party escrow', icon: 'Lock', color: '#ef4444' },
+  { id: 6, name: 'Real-time Monitoring', description: 'Live repayment tracking, instant alerts for anomalies', icon: 'Eye', color: '#06b6d4' },
+  { id: 7, name: 'Multi-tier Collection', description: 'AI Collection → Manual Calls → Legal Action → Asset Disposal', icon: 'AlertTriangle', color: '#f97316' },
+  { id: 8, name: 'Risk Isolation', description: 'Per-transaction and per-user exposure limits, systemic risk firewall', icon: 'ShieldCheck', color: '#10b981' },
 ]
 
 export const creditLevels = [
-  { level: 1, name: '新手', limit: 5000, requirements: '完成注册和KYB验证', color: '#94a3b8' },
-  { level: 2, name: '初级', limit: 20000, requirements: '完成3笔借款，按时还款率>90%', color: '#22c55e' },
-  { level: 3, name: '中级', limit: 50000, requirements: '完成8笔借款，按时还款率>95%，运营满1年', color: '#3b82f6' },
-  { level: 4, name: '高级', limit: 150000, requirements: '完成15笔借款，按时还款率>98%，实地走访通过', color: '#8b5cf6' },
-  { level: 5, name: '钻石', limit: 500000, requirements: '完成30笔借款，按时还款率100%，战略合作伙伴', color: '#f59e0b' },
+  { level: 1, name: 'Starter', limit: 5000, requirements: 'Complete registration and KYB verification', color: '#94a3b8' },
+  { level: 2, name: 'Basic', limit: 20000, requirements: 'Complete 3 loans, on-time rate >90%', color: '#22c55e' },
+  { level: 3, name: 'Intermediate', limit: 50000, requirements: 'Complete 8 loans, on-time rate >95%, 1 year operations', color: '#3b82f6' },
+  { level: 4, name: 'Advanced', limit: 150000, requirements: 'Complete 15 loans, on-time rate >98%, site visit passed', color: '#8b5cf6' },
+  { level: 5, name: 'Diamond', limit: 500000, requirements: 'Complete 30 loans, on-time rate 100%, strategic partner', color: '#f59e0b' },
 ]
 
 // ─── Landing Page Stats ───
@@ -481,9 +481,9 @@ export const platformStats = {
 
 // ─── FAQ Items ───
 export const faqItems = [
-  { q: '如何保障出借方的资金安全？', a: '平台采用八重风控体系，包括严格的KYB企业验证、AI信用评估、质押物管理、实时监控预警等多层防护。同时设有风险隔离机制，限制单笔和单用户的风险敞口。' },
-  { q: '借款审批需要多长时间？', a: 'AI Agent可以在几秒内完成初步匹配。完整的KYB验证通常在24-48小时内完成。审核通过后即可获得初始额度。' },
-  { q: '支持哪些还款方式？', a: '支持到期还本付息、等额本息、先息后本、等额本金四种还款方式。借贷双方可在发布需求时自由选择。' },
-  { q: '逾期了怎么办？', a: '平台设有多级催收体系：首先AI自动提醒 → 人工客服沟通 → 法务介入 → 必要时处置质押物。逾期将影响信用评分和未来额度。' },
-  { q: '$U是什么？', a: '$U是平台的收益型存款产品。将资金转换为$U后可获得基础年化收益（当前约4.5%），同时$U可直接用于平台内的借贷操作。' },
+  { q: 'How do you protect lender funds?', a: 'Our platform employs an 8-layer risk control system including strict KYB verification, AI credit assessment, collateral management, real-time monitoring, and more. We also implement risk isolation mechanisms to limit single-transaction and single-user exposure.' },
+  { q: 'How long does loan approval take?', a: 'AI Agent can complete initial matching within seconds. Full KYB verification typically completes within 24-48 hours. Once approved, you receive your initial credit limit immediately.' },
+  { q: 'What repayment methods are supported?', a: 'We support Bullet (principal + interest at maturity), Equal Installment, Interest First (principal at end), and Equal Principal repayment methods. Both parties can freely choose when posting their requirements.' },
+  { q: 'What happens if there is a default?', a: 'We have a multi-tier collection system: AI auto-reminders → Customer service calls → Legal intervention → Collateral liquidation when necessary. Defaults affect credit scores and future limits.' },
+  { q: 'What is $U?', a: '$U is our yield-bearing deposit product. Converting funds to $U earns base APY (currently ~4.5%), and $U can be directly used for lending operations on the platform.' },
 ]

@@ -64,12 +64,12 @@ export default function MatchResultsPage() {
               <Brain className="h-10 w-10 text-emerald-400" />
             </motion.div>
           </div>
-          <h2 className="mb-2 text-xl font-bold">AI Agent 正在分析...</h2>
+          <h2 className="mb-2 text-xl font-bold">AI Agent Analyzing...</h2>
           <p className="mb-6 text-sm text-muted-foreground">
-            {loadProgress < 30 && "扫描市场挂单..."}
-            {loadProgress >= 30 && loadProgress < 60 && "评估信用风险..."}
-            {loadProgress >= 60 && loadProgress < 85 && "计算匹配得分..."}
-            {loadProgress >= 85 && "生成推荐结果..."}
+            {loadProgress < 30 && "Scanning market orders..."}
+            {loadProgress >= 30 && loadProgress < 60 && "Evaluating credit risk..."}
+            {loadProgress >= 60 && loadProgress < 85 && "Calculating match scores..."}
+            {loadProgress >= 85 && "Generating recommendations..."}
           </p>
           <div className="mx-auto w-64">
             <Progress value={loadProgress} className="h-2" />
@@ -87,8 +87,8 @@ export default function MatchResultsPage() {
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20">
             <Sparkles className="h-7 w-7 text-emerald-400" />
           </div>
-          <h1 className="text-2xl font-bold sm:text-3xl">匹配结果</h1>
-          <p className="mt-1 text-muted-foreground">AI Agent 为您找到 {matchResults.length} 个匹配方案</p>
+          <h1 className="text-2xl font-bold sm:text-3xl">Match Results</h1>
+          <p className="mt-1 text-muted-foreground">AI Agent found {matchResults.length} matching options for you</p>
         </div>
 
         {/* Top Match */}
@@ -100,7 +100,7 @@ export default function MatchResultsPage() {
         >
           <Card className="relative overflow-hidden border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-transparent glow-green">
             <div className="absolute right-4 top-4">
-              <Badge className="bg-emerald-500 text-white">🏆 最佳匹配</Badge>
+              <Badge className="bg-emerald-500 text-white">🏆 Best Match</Badge>
             </div>
             <CardContent className="p-6 sm:p-8">
               <div className="grid gap-6 sm:grid-cols-2">
@@ -112,26 +112,26 @@ export default function MatchResultsPage() {
                     <div>
                       <h3 className="text-lg font-bold">{topMatch.counterpartyName}</h3>
                       <Link href={`/profile/${topMatch.counterpartyId}`}>
-                        <span className="text-xs text-emerald-400 hover:underline">查看画像 →</span>
+                        <span className="text-xs text-emerald-400 hover:underline">View Profile →</span>
                       </Link>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div className="rounded-lg bg-secondary/30 p-3">
-                      <span className="text-xs text-muted-foreground">金额</span>
+                      <span className="text-xs text-muted-foreground">Amount</span>
                       <div className="font-bold">{topMatch.amount.toLocaleString()} {topMatch.currency}</div>
                     </div>
                     <div className="rounded-lg bg-secondary/30 p-3">
-                      <span className="text-xs text-muted-foreground">利率</span>
+                      <span className="text-xs text-muted-foreground">Interest Rate</span>
                       <div className="font-bold text-emerald-400">{topMatch.interestRate}%</div>
                     </div>
                     <div className="rounded-lg bg-secondary/30 p-3">
-                      <span className="text-xs text-muted-foreground">期限</span>
-                      <div className="font-bold">{topMatch.term}天</div>
+                      <span className="text-xs text-muted-foreground">Term</span>
+                      <div className="font-bold">{topMatch.term} days</div>
                     </div>
                     <div className="rounded-lg bg-secondary/30 p-3">
-                      <span className="text-xs text-muted-foreground">信用评分</span>
+                      <span className="text-xs text-muted-foreground">Credit Score</span>
                       <div className="font-bold text-cyan-400">{topMatch.creditScore}</div>
                     </div>
                   </div>
@@ -159,7 +159,7 @@ export default function MatchResultsPage() {
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <span className="text-3xl font-bold text-emerald-400">{topMatch.matchScore}%</span>
-                      <span className="text-xs text-muted-foreground">匹配度</span>
+                      <span className="text-xs text-muted-foreground">Match Score</span>
                     </div>
                   </div>
 
@@ -182,16 +182,16 @@ export default function MatchResultsPage() {
                   size="lg"
                   onClick={() => setConfirmOpen(true)}
                 >
-                  <CheckCircle2 className="h-4 w-4" /> 接受匹配
+                  <CheckCircle2 className="h-4 w-4" /> Accept Match
                 </Button>
                 <Link href="/market" className="flex-1">
                   <Button variant="outline" className="w-full gap-2 border-border/50" size="lg">
-                    <XCircle className="h-4 w-4" /> 拒绝，转为挂单
+                    <XCircle className="h-4 w-4" /> Decline, Post to Market
                   </Button>
                 </Link>
                 <Link href="/post/lend" className="flex-1">
                   <Button variant="outline" className="w-full gap-2 border-border/50" size="lg">
-                    <Edit3 className="h-4 w-4" /> 修改条件
+                    <Edit3 className="h-4 w-4" /> Modify Conditions
                   </Button>
                 </Link>
               </div>
@@ -201,7 +201,7 @@ export default function MatchResultsPage() {
 
         {/* Other Matches */}
         <div className="mb-8">
-          <h2 className="mb-4 text-lg font-bold">其他匹配方案</h2>
+          <h2 className="mb-4 text-lg font-bold">Other Matches</h2>
           <div className="grid gap-4 sm:grid-cols-3">
             {otherMatches.map((match, i) => (
               <motion.div
@@ -219,10 +219,10 @@ export default function MatchResultsPage() {
                       </Badge>
                     </div>
                     <div className="mb-3 grid grid-cols-2 gap-2 text-xs">
-                      <span className="text-muted-foreground">金额: <span className="text-foreground font-medium">{match.amount.toLocaleString()}</span></span>
-                      <span className="text-muted-foreground">利率: <span className="text-emerald-400 font-medium">{match.interestRate}%</span></span>
-                      <span className="text-muted-foreground">期限: <span className="text-foreground font-medium">{match.term}天</span></span>
-                      <span className="text-muted-foreground">信用: <span className="text-foreground font-medium">{match.creditScore}分</span></span>
+                      <span className="text-muted-foreground">Amount: <span className="text-foreground font-medium">{match.amount.toLocaleString()}</span></span>
+                      <span className="text-muted-foreground">Rate: <span className="text-emerald-400 font-medium">{match.interestRate}%</span></span>
+                      <span className="text-muted-foreground">Term: <span className="text-foreground font-medium">{match.term} days</span></span>
+                      <span className="text-muted-foreground">Credit: <span className="text-foreground font-medium">{match.creditScore} pts</span></span>
                     </div>
                     {match.differences.length > 0 && (
                       <div className="mb-3 space-y-1">
@@ -234,7 +234,7 @@ export default function MatchResultsPage() {
                       </div>
                     )}
                     <Button size="sm" variant="outline" className="w-full border-border/50 text-xs">
-                      查看详情
+                      View Details
                     </Button>
                   </CardContent>
                 </Card>
@@ -251,7 +251,7 @@ export default function MatchResultsPage() {
           >
             <div className="flex items-center gap-2">
               <Brain className="h-4 w-4 text-violet-400" />
-              <span className="font-medium">匹配逻辑说明</span>
+              <span className="font-medium">Matching Algorithm Explanation</span>
             </div>
             <ChevronDown className={`h-4 w-4 transition-transform ${expandExplain ? "rotate-180" : ""}`} />
           </div>
@@ -259,15 +259,15 @@ export default function MatchResultsPage() {
             {expandExplain && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
                 <CardContent className="pt-0 text-sm text-muted-foreground space-y-2">
-                  <p>AI Agent 匹配算法综合考虑以下因素：</p>
+                  <p>The AI Agent matching algorithm considers the following factors:</p>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li><strong>信用评分 (30%)</strong> — 借款方的历史信用表现和评分等级</li>
-                    <li><strong>条件匹配度 (25%)</strong> — 金额、利率、期限等条件的契合程度</li>
-                    <li><strong>还款历史 (20%)</strong> — 历史按时还款率和交易记录</li>
-                    <li><strong>行业匹配 (15%)</strong> — 出借方偏好行业与借款方行业的匹配</li>
-                    <li><strong>风控评级 (10%)</strong> — 综合风险评估和质押物评估</li>
+                    <li><strong>Credit Score (30%)</strong> — Borrower&apos;s historical credit performance and rating level</li>
+                    <li><strong>Condition Match (25%)</strong> — How well amount, rate, and term align</li>
+                    <li><strong>Repayment History (20%)</strong> — Historical on-time payment rate and transaction record</li>
+                    <li><strong>Industry Match (15%)</strong> — Lender&apos;s preferred industries vs borrower&apos;s industry</li>
+                    <li><strong>Risk Rating (10%)</strong> — Comprehensive risk assessment and collateral evaluation</li>
                   </ul>
-                  <p>匹配度分数为各项加权计算后的综合结果，分数越高匹配质量越好。</p>
+                  <p>The match score is the weighted calculation of all factors—higher scores indicate better match quality.</p>
                 </CardContent>
               </motion.div>
             )}
@@ -279,27 +279,27 @@ export default function MatchResultsPage() {
       <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{confirmed ? "🎉 匹配成功！" : "确认接受匹配"}</DialogTitle>
+            <DialogTitle>{confirmed ? "🎉 Match Successful!" : "Confirm Match"}</DialogTitle>
             <DialogDescription>
               {confirmed
-                ? "交易已创建，请在 Dashboard 查看详情。"
-                : `您确定接受与 ${topMatch.counterpartyName} 的匹配吗？金额 ${topMatch.amount.toLocaleString()} ${topMatch.currency}，利率 ${topMatch.interestRate}%，期限 ${topMatch.term}天。`
+                ? "Transaction created. Check your Dashboard for details."
+                : `Are you sure you want to accept the match with ${topMatch.counterpartyName}? Amount: ${topMatch.amount.toLocaleString()} ${topMatch.currency}, Rate: ${topMatch.interestRate}%, Term: ${topMatch.term} days.`
               }
             </DialogDescription>
           </DialogHeader>
           {!confirmed ? (
             <div className="flex gap-3">
               <Button className="flex-1 bg-emerald-600 hover:bg-emerald-700" onClick={handleAccept}>
-                确认
+                Confirm
               </Button>
               <Button variant="outline" className="flex-1" onClick={() => setConfirmOpen(false)}>
-                取消
+                Cancel
               </Button>
             </div>
           ) : (
             <Link href="/lender/dashboard">
               <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
-                前往 Dashboard →
+                Go to Dashboard →
               </Button>
             </Link>
           )}
