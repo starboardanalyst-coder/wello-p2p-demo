@@ -30,12 +30,6 @@ const statusMap: Record<string, { label: string; variant: "default" | "secondary
   matched: { label: "Matched", variant: "default" },
 }
 
-const repayMethodMap: Record<string, string> = {
-  bullet: "Bullet",
-  equal_installment: "Equal Installment",
-  interest_first: "Interest First",
-  equal_principal: "Equal Principal",
-}
 
 // Mock data for v3 features
 const vaultData = {
